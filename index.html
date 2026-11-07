@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>The Secret of Giuliana – The 15th Mystery</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#07061a;--card:#14123a;--tx:#ece9ff;--gold:#e8c46a;--vi:#8b5cf6;color-scheme:dark}
+*{box-sizing:border-box}html,body{margin:0;min-height:100%}
+body{background:radial-gradient(ellipse at top,#1d1550,#07061a 70%) fixed;color:var(--tx);font-family:Inter,system-ui,sans-serif;padding:env(safe-area-inset-top,0) 0 env(safe-area-inset-bottom,0)}
+#app{max-width:520px;margin:auto;padding:16px 16px 90px}
+h1,h2,h3{font-family:Cinzel,serif;color:var(--gold);margin:.3em 0;text-align:center;letter-spacing:.04em}
+.card{background:var(--card);border:1px solid #3a2f8a;border-radius:16px;padding:14px;margin:12px 0;box-shadow:0 0 18px #8b5cf622}
+button,input{font:inherit;min-height:48px;border-radius:12px;border:1px solid #5b4bd0;padding:10px 14px;color:var(--tx);background:#1e1a5c;width:100%;margin:5px 0}
+button{cursor:pointer;font-weight:600;background:linear-gradient(135deg,#6d3df0,#3b2bb0)}
+button.gold{background:linear-gradient(135deg,#e8c46a,#a8801f);color:#1a1200;border:0}
+button.sm{width:auto;min-height:44px}button:disabled{opacity:.4}
+input{background:#0d0b2a}
+.row{display:flex;gap:8px}.row>*{flex:1}
+.nav{position:fixed;bottom:0;left:0;right:0;display:flex;gap:6px;padding:8px 8px calc(8px + env(safe-area-inset-bottom,0));background:#07061aee;backdrop-filter:blur(8px);max-width:520px;margin:auto}
+.nav button{min-height:44px;font-size:13px;padding:6px}
+.door{width:120px;height:170px;margin:18px auto;position:relative;perspective:600px;border:4px solid var(--gold);border-radius:60px 60px 4px 4px;background:radial-gradient(circle,#ffe9a0,#e8c46a 40%,#2a1b6e);overflow:hidden}
+.door i{position:absolute;inset:0;background:linear-gradient(90deg,#2a1b6e,#120d3a);transform-origin:left;animation:open 3.5s .6s forwards;border-right:3px solid var(--gold)}
+@keyframes open{to{transform:rotateY(-110deg)}}
+.bar{height:10px;background:#0d0b2a;border-radius:6px;overflow:hidden}.bar b{display:block;height:100%;background:linear-gradient(90deg,#8b5cf6,#e8c46a);transition:width .6s}
+.big{font-size:44px;text-align:center}.sym{font-size:34px;letter-spacing:6px;text-align:center}
+.msg{text-align:center;min-height:24px;font-weight:600}
+.dis{animation:dis .9s forwards}@keyframes dis{50%{filter:blur(2px);transform:scale(1.04)}to{opacity:0;transform:scale(.6) translateY(-30px);filter:blur(10px);height:0;padding:0;margin:0;border:0}}
+.pop{animation:pop .6s}@keyframes pop{from{transform:scale(.6);opacity:0}}
+.fx{position:fixed;top:-30px;font-size:26px;animation:fall 3s linear forwards;pointer-events:none;z-index:9}
+@keyframes fall{to{transform:translateY(110vh) rotate(360deg)}}
+.hz{display:flex;align-items:center;gap:10px}.sh{font-size:34px}
+.locked{opacity:.45}small,.mut{color:#a9a3d9}
+.ok{color:#6ee7a0}.er{color:#ff7b8a}
+#app.fi{animation:fi .7s}@keyframes fi{from{opacity:0;transform:translateY(18px) scale(.97);filter:blur(6px)}}
+h1{background:linear-gradient(90deg,#e8c46a,#fff,#a78bfa,#e8c46a);background-size:300%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:sh 5s linear infinite;text-shadow:none}@keyframes sh{to{background-position:300%}}
+.door{box-shadow:0 0 60px #e8c46a99,0 0 120px #8b5cf666;animation:gl 2.5s ease-in-out infinite alternate}@keyframes gl{to{box-shadow:0 0 90px #ffe9a0,0 0 160px #8b5cf6}}
+.card{transition:transform .25s,box-shadow .25s}.card:active{transform:scale(.97)}.card.hz{animation:fl 4s ease-in-out infinite}.card.hz:nth-child(odd){animation-delay:-2s}@keyframes fl{50%{transform:translateY(-4px)}}
+.sh,.big{display:inline-block;animation:bob 2.6s ease-in-out infinite;filter:drop-shadow(0 0 10px currentColor)}@keyframes bob{50%{transform:translateY(-5px) rotate(4deg) scale(1.08)}}
+button:not(:disabled):active{transform:scale(.96)}button.gold{animation:pu 2s infinite}@keyframes pu{50%{box-shadow:0 0 22px #e8c46a}}
+.ovl{position:fixed;inset:0;z-index:20;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#07061a;animation:ov 1.5s forwards;pointer-events:none}.ovl span{font-size:90px;animation:zm 1.5s forwards}.ovl h2{animation:zm 1.5s forwards}@keyframes ov{60%{opacity:1}to{opacity:0;visibility:hidden}}@keyframes zm{to{transform:scale(2.4);filter:blur(4px)}}
+.flash{position:fixed;inset:0;z-index:19;background:radial-gradient(circle,#ffe9a0,transparent 70%);animation:fo .9s forwards;pointer-events:none}@keyframes fo{to{opacity:0}}
+.bar b{box-shadow:0 0 12px #e8c46a}.card .big{font-size:56px}
+</style></head><body><canvas id="bg" style="position:fixed;inset:0;width:100%;height:100%;z-index:-1"></canvas><div id="app"></div><div class="nav" id="nav"></div>
+<script>
+const $=s=>document.querySelector(s);
+const HOUSES=[{k:'gryffindor',n:'GRYFFINDOR',s:'🦁',c:'#e03a3e',m:'Valentía · Coraje'},{k:'slytherin',n:'SLYTHERIN',s:'🐍',c:'#2ecc71',m:'Ambición · Astucia'},{k:'ravenclaw',n:'RAVENCLAW',s:'🦅',c:'#4a7dff',m:'Sabiduría · Ingenio'},{k:'hufflepuff',n:'HUFFLEPUFF',s:'🦡',c:'#f4c430',m:'Lealtad · Esfuerzo'}];
+const CODES=['G7','1K','M4','8Q','Z2','5R'];
+const BASE=[
+{n:'BIBLIOTECA PROHIBIDA',e:'📚',d:'La Sección Prohibida de Hogwarts: libros que susurran y hechizos antiguos.',ch:[
+{t:'EL OBJETO DE LOS GEMELOS',q:'Tiene ríos sin agua y castillos sin gente. Los gemelos Weasley se lo regalaron a Harry y solo se activa con una frase solemne. ¿Qué es?',a:['mapadelmerodeador','mapamerodeador','mapa'],p:150,h:'Muestra a todos los que caminan por Hogwarts.'},
+{t:'EL NOMBRE PROHIBIDO',q:'Ordená las letras del mago tenebroso que muchos temen nombrar:',v:'T R O V O L E M D',a:['voldemort','lordvoldemort'],p:200,h:'Su nombre de nacimiento era Tom Riddle.'},
+{t:'EL LIBRO CORRECTO',q:'En la Sección Prohibida hay cuatro libros de hechizos. ¿Cuál enseña a invocar un guardián plateado contra los dementores?',o:['Wingardium Leviosa','Expecto Patronum','Avada Kedavra','Alohomora'],a:['Expecto Patronum'],p:150,h:'Su forma depende de un recuerdo feliz.'},
+{t:'MENSAJE CIFRADO',q:'Cada letra fue reemplazada por la siguiente del abecedario (A→B, B→C…). Descifrá el hechizo:',v:'B M P I P N P S B',a:['alohomora'],p:250,h:'Abre puertas cerradas.'}]},
+{n:'CÁMARA DEL TIEMPO',e:'⏳',d:'Giratiempos, relojes encantados y el andén 9¾.',ch:[
+{t:'EL EXPRESO DE HOGWARTS',q:'El tren sale a las 11:00. Harry llegó 1 hora y 25 minutos antes. ¿A qué hora llegó? (h:mm)',v:'🚂',a:['9:35','09:35','935','0935'],p:150,h:'Restá 1 hora y después 25 minutos.'},
+{t:'NÚMEROS MÁGICOS',q:'Completá la secuencia:',v:'2 – 3 – 5 – 7 – 11 – 13 – ?',a:['17','diecisiete'],p:150,h:'Solo se dividen por sí mismos y por 1.'},
+{t:'EL ARTEFACTO DE HERMIONE',q:'Ordená el objeto que usó Hermione para llegar a todas sus clases:',v:'O M I E P A T I R G',a:['giratiempo','giratiempos'],p:200,h:'Un collar de arena que gira.'},
+{t:'EL PARTIDO DE QUIDDITCH',q:'Cada gol vale 10 puntos y atrapar la Snitch dorada vale 150. Gryffindor hizo 7 goles y atrapó la Snitch; Slytherin hizo 12 goles. ¿Por cuántos puntos ganó Gryffindor?',a:['100'],p:250,h:'Gryffindor: 70 + 150. Slytherin: 120.'}]},
+{n:'LABERINTO DE ESPEJOS',e:'🪞',d:'El Espejo de Oesed muestra lo que más deseás.',ch:[
+{t:'EL ESPEJO DE OESED',q:'El espejo se llama OESED (ERISED en inglés). Leído al revés, ¿qué palabra forma? Vale en español o en inglés.',v:'O E S E D',a:['deseo','desire'],p:150,h:'Es lo que muestra el espejo.'},
+{t:'LOS CUATRO EMBLEMAS',q:'¿Qué posición (1-7) cambió en la segunda fila?',v:'🦁🐍🦅🦡🦁🐍🦅<br>🦁🐍🦅🦁🦁🐍🦅',a:['4','cuatro'],p:150,h:'Falta un tejón.'},
+{t:'EL ACERTIJO DEL ESPEJO',q:'Muestro lo que deseás, pero ni el conocimiento ni la verdad. Harry pasó noches frente a mí viendo a su familia. ¿Qué soy?',a:['espejo','espejodeoesed','espejodeerised','espejodeseos','elespejodeoesed','elespejodeerised','oesed','erised','mirror','mirrorofErised'.toLowerCase()],p:200,h:'Dumbledore lo escondió en un aula.'},
+{t:'EL HECHIZO INVERTIDO',q:'Girá el celular y leé el hechizo de desarme:',v:'<span style="display:inline-block;transform:rotate(180deg)">EXPELLIARMUS</span>',a:['expelliarmus'],p:250,h:'Harry lo usó contra Voldemort.'}]},
+{n:'GALERÍA CRÍPTICA',e:'🖼️',d:'Retratos que hablan, estatuas y emblemas de las casas.',ch:[
+{t:'EL RETRATO QUE FALTA',q:'Colgaron los retratos de Godric Gryffindor, Helga Hufflepuff y Rowena Ravenclaw. ¿Quién falta?',o:['Salazar Slytherin','Albus Dumbledore','Severus Snape','Peter Pettigrew'],a:['Salazar Slytherin'],p:150,h:'Fundó la casa de las serpientes.'},
+{t:'EL GUARDIÁN DEL TERCER PISO',q:'¿Cómo se llama el perro de tres cabezas de Hagrid que cuidaba la Piedra Filosofal?',a:['fluffy','cerbero'],p:150,h:'Se duerme con música.'},
+{t:'EL ANAGRAMA DEL DEPORTE',q:'Ordená el deporte favorito de los magos:',v:'D H I C Q T D I U',a:['quidditch'],p:200,h:'Se juega en escobas.'},
+{t:'LA ESTATUA DE LOS EMBLEMAS',q:'Estatuas: 🦁 🐍 🦅 🦡. ¿Qué animal es el emblema de la casa conocida por la lealtad y el trabajo duro?',a:['tejon','eltejon','hufflepuff'],p:150,h:'Su color es el amarillo.'}]},
+{n:'LABORATORIO SECRETO',e:'🧪',d:'Las mazmorras de Pociones del profesor Snape.',ch:[
+{t:'LA POCIÓN PERFECTA',q:'Una poción mezcla 3 ingredientes en proporción 2 : 3 : 5. Si el total son 30 ml, ¿cuántos ml tiene el ingrediente mayor?',a:['15','15ml'],p:200,h:'2 + 3 + 5 = 10 partes.'},
+{t:'EL ALMA DIVIDIDA',q:'Voldemort partió su alma en la cantidad que indica este número binario. ¿Cuántas partes (en decimal)?',v:'1 1 1',a:['7','siete'],p:200,h:'1 + 2 + 4.'},
+{t:'EL ANAGRAMA DE LA TRANSFORMACIÓN',q:'Ordená el mago que se transforma en animal:',v:'G O M A N A I',a:['animago'],p:200,h:'Como McGonagall y su gato.'},
+{t:'LOS FRASCOS DE SNAPE',q:'Cuatro frascos en fila: 🔵 🟢 🔴 🟡. Pistas: 1) El veneno no está en los extremos. 2) El frasco rojo está a la derecha del veneno. 3) El azul no es veneno. ¿Cuál es el veneno?',o:['🔵','🟢','🔴','🟡'],a:['🟢'],p:250,h:'Solo quedan dos posiciones posibles.'}]},
+{n:'LA BÓVEDA FINAL',e:'🔐',d:'Las bóvedas de Gringotts, cuidadas por duendes y dragones.',ch:[
+{t:'LA BÓVEDA DE LOS LESTRANGE',q:'Sumá los dígitos del número de bóveda 713 y multiplicalo por la cantidad de hijos de la familia Weasley.',a:['77'],p:250,h:'Hay 7 hermanos Weasley.'},
+{t:'LA COMBINACIÓN',q:'Tres números seguidos: cantidad de casas de Hogwarts, edad con la que Harry entra al colegio y cantidad de partes del alma de Voldemort.',a:['4117'],p:250,h:'4 … 11 … 7.'},
+{t:'EL ANAGRAMA FINAL',q:'Ordená la fecha que hoy celebramos:',v:'S O Ñ E A P M L U C',a:['cumpleanos'],p:200,h:'¡Feliz ___ 15, Giuliana!'},
+{t:'LOS BÚHOS ESCONDIDOS',q:'Hedwig se escondió entre los murciélagos. ¿Cuántos 🦉 hay?',v:'GRID',a:['4','cuatro'],p:250,h:'Contá fila por fila.'}]}];
+const rot=w=>'<span style="display:inline-block;transform:rotate(180deg)">'+w+'</span>';
+const HC={gryffindor:['R4','7M','K9','2T','X5','B8'],slytherin:['V3','9D','N6','4H','S1','J7'],ravenclaw:['W8','2F','C5','6P','L9','T3'],hufflepuff:['Q2','5B','Y7','8G','D4','M6']};
+const V={gryffindor:[],
+slytherin:[
+[{q:'Es un cuaderno negro que escribe de vuelta; Ginny lo usó sin saber que guardaba un pedazo de alma. ¿Qué es?',a:['diario','eldiario','diariodetomriddle','diariodetom'],h:'Perteneció a Tom Riddle.'},
+{q:'Ordená el nombre de la serpiente de Voldemort:',v:'I G N N A I',a:['nagini'],h:'También fue un horrocrux.'},
+{q:'¿Qué hechizo es una maldición imperdonable que controla la voluntad de otro?',o:['Imperio','Lumos','Accio','Obliviate'],a:['Imperio'],h:'Su nombre significa mando.'},
+{q:'Cada letra fue reemplazada por la siguiente del abecedario (A→B). Descifrá el hechizo:',v:'Q F U S J G J D V T',a:['petrificus','petrificustotalus'],h:'Deja a la víctima rígida.'}],
+[{q:'El Expreso sale a las 11:00. Harry llegó 2 horas y 5 minutos antes. ¿A qué hora llegó? (h:mm)',a:['8:55','08:55','855','0855'],h:'Restá 2 horas y luego 5 minutos.'},
+{q:'Completá la secuencia:',v:'1 – 4 – 9 – 16 – 25 – ?',a:['36'],h:'Son cuadrados perfectos.'},
+{q:'Ordená el nombre del colegio de magia:',v:'W S G A H T R O',a:['hogwarts'],h:'Tiene cuatro casas.'},
+{q:'Cada gol vale 10 puntos y la Snitch dorada 150. Slytherin hizo 9 goles y atrapó la Snitch; Ravenclaw hizo 20 goles. ¿Por cuántos puntos ganó Slytherin?',a:['40'],h:'Slytherin: 90 + 150. Ravenclaw: 200.'}],
+[{q:'Leé la palabra al revés y decime qué es:',v:'A T I R A V',a:['varita'],h:'Sin ella no hay magia.'},
+{q:'¿Qué posición (1-7) cambió en la segunda fila?',v:'🦁🐍🦅🦡🦁🐍🦅<br>🦁🐍🦡🦡🦁🐍🦅',a:['3','tres'],h:'Una serpiente fue reemplazada.'},
+{q:'Soy una piedra roja que da vida eterna; Nicolas Flamel me creó. ¿Qué soy?',a:['piedrafilosofal','lapiedrafilosofal','piedra'],h:'Tiene nombre de sabio.'},
+{q:'Girá el celular y leé el hechizo de protección:',v:rot('PROTEGO'),a:['protego'],h:'Crea un escudo invisible.'}],
+[{q:'¿Quién fue el director de Hogwarts que cayó desde la Torre de Astronomía?',o:['Albus Dumbledore','Severus Snape','Minerva McGonagall','Filius Flitwick'],a:['Albus Dumbledore'],h:'Tenía una barba muy larga.'},
+{q:'¿Cómo se llama el elfo doméstico libre que ayudó a Harry?',a:['dobby'],h:'Le encantan los calcetines.'},
+{q:'Ordená el banco de los magos:',v:'T T O G N I R G S',a:['gringotts'],h:'Lo cuidan duendes.'},
+{q:'Estatuas: 🦁 🐍 🦅 🦡. ¿Qué animal es el emblema de la casa de la ambición y la astucia?',a:['serpiente','laserpiente','slytherin','culebra'],h:'Su color es el verde.'}],
+[{q:'Una poción mezcla 3 ingredientes en proporción 1 : 2 : 6. Si el total son 45 ml, ¿cuántos ml tiene el ingrediente mayor?',a:['30','30ml'],h:'1 + 2 + 6 = 9 partes.'},
+{q:'¿Cuántas casas hay en Hogwarts? Escribilo en decimal a partir del binario:',v:'1 0 0',a:['4','cuatro'],h:'Es 4.'},
+{q:'Ordená algo que se prepara en las mazmorras:',v:'N O C I O P',a:['pocion','pociones'],h:'Snape las enseña.'},
+{q:'Cuatro frascos en fila: 🟣 ⚪ 🟠 🟤. Pistas: 1) El veneno no está en los extremos. 2) El morado está a la izquierda del veneno. 3) El naranja no es veneno. ¿Cuál es el veneno?',o:['🟣','⚪','🟠','🟤'],a:['⚪'],h:'Solo hay dos posiciones posibles.'}],
+[{q:'Sumá los dígitos del número de la bóveda de Harry (687) y multiplicalo por la cantidad de casas de Hogwarts.',a:['84'],h:'6+8+7 = 21.'},
+{q:'Tres números seguidos: cantidad de hijos Weasley, edad con la que Harry entra al colegio y cantidad de casas.',a:['7114'],h:'7 … 11 … 4.'},
+{q:'Ordená lo que se dice en un cumpleaños:',v:'D E S L I C F I E A D',a:['felicidades'],h:'¡Muchas ___, Giuliana!'},
+{q:'Hedwig se escondió entre los murciélagos. ¿Cuántos 🦉 hay?',g:[1,6,12,17,22],a:['5','cinco'],h:'Contá fila por fila.'}]],
+ravenclaw:[
+[{q:'Es una diadema perdida de la fundadora de mi casa; Voldemort la escondió. ¿Qué es?',a:['diadema','diademaderavenclaw','diademaderowena'],h:'Perteneció a Rowena.'},
+{q:'Ordená el nombre del director de Hogwarts:',v:'B M U D O R L E D E',a:['dumbledore','albusdumbledore'],h:'Amaba los caramelos de limón.'},
+{q:'¿Qué hechizo hace levitar objetos?',o:['Wingardium Leviosa','Alohomora','Lumos','Accio'],a:['Wingardium Leviosa'],h:'Se dice con la pronunciación correcta.'},
+{q:'Cada letra fue reemplazada por la siguiente del abecedario (A→B). Descifrá el hechizo:',v:'M V N P T',a:['lumos'],h:'Da luz en la varita.'}],
+[{q:'La clase de Pociones empieza a las 13:30. Hermione llegó 1 hora y 40 minutos antes. ¿A qué hora llegó? (hh:mm)',a:['11:50','1150'],h:'Restá 2 horas y sumá 20.'},
+{q:'Completá la secuencia:',v:'1 – 1 – 2 – 3 – 5 – 8 – ?',a:['13','trece'],h:'Sumá los dos anteriores.'},
+{q:'Ordená lo que hay que atrapar en Quidditch para ganar:',v:'T C H S I N',a:['snitch','snitchdorada'],h:'Es dorada y tiene alas.'},
+{q:'Cada gol vale 10 puntos y la Snitch dorada 150. Ravenclaw hizo 5 goles y atrapó la Snitch; Hufflepuff hizo 14 goles. ¿Por cuántos puntos ganó Ravenclaw?',a:['60'],h:'Ravenclaw: 50 + 150. Hufflepuff: 140.'}],
+[{q:'Leé la palabra al revés y decime qué es:',v:'A I G A M',a:['magia'],h:'Lo que hacen los magos.'},
+{q:'¿Qué posición (1-7) cambió en la segunda fila?',v:'🦁🐍🦅🦡🦁🐍🦅<br>🦁🐍🦅🦡🦁🦅🦅',a:['6','seis'],h:'Cerca del final.'},
+{q:'Soy un sombrero viejo que decide la casa de cada alumno. ¿Qué soy?',a:['sombreroseleccionador','sombrero','elsombreroseleccionador'],h:'Canta una canción.'},
+{q:'Girá el celular y leé el hechizo que ahuyenta al Boggart:',v:rot('RIDDIKULUS'),a:['riddikulus'],h:'Convierte el miedo en risa.'}],
+[{q:'¿Qué profesora enseña Transformaciones y se convierte en gato?',o:['Minerva McGonagall','Severus Snape','Rubeus Hagrid','Pomona Sprout'],a:['Minerva McGonagall'],h:'Dirige la casa de Gryffindor.'},
+{q:'¿Cómo se llama el hipogrifo que Hagrid presentó en clase?',a:['buckbeak'],h:'Hay que hacerle una reverencia.'},
+{q:'Ordená el transporte de los magos:',v:'B C A S O E',a:['escoba'],h:'Se usa para volar.'},
+{q:'Estatuas: 🦁 🐍 🦅 🦡. ¿Qué animal es el emblema de la casa de la sabiduría y el ingenio?',a:['aguila','elaguila','ravenclaw'],h:'Vuela muy alto.'}],
+[{q:'Una poción mezcla 3 ingredientes en proporción 2 : 5 : 3. Si el total son 50 ml, ¿cuántos ml tiene el ingrediente mayor?',a:['25','25ml'],h:'2 + 5 + 3 = 10 partes.'},
+{q:'Harry entra a Hogwarts con la edad que indica este número binario. ¿Cuál es (decimal)?',v:'1 0 1 1',a:['11','once'],h:'8 + 2 + 1.'},
+{q:'Ordená lo que necesita todo mago:',v:'T A R I A V',a:['varita'],h:'Madera y un núcleo mágico.'},
+{q:'Cuatro frascos en fila: 🔴 🟡 🟢 🔵. Pistas: 1) El veneno no está en los extremos. 2) El rojo está a la izquierda del veneno. 3) El verde no es veneno. ¿Cuál es el veneno?',o:['🔴','🟡','🟢','🔵'],a:['🟡'],h:'Solo hay dos posiciones posibles.'}],
+[{q:'Sumá los dígitos de la bóveda 713 y multiplicalo por la cantidad del trío de amigos principales (Harry, Ron y Hermione).',a:['33'],h:'7+1+3 = 11.'},
+{q:'Tres números seguidos: cantidad de libros de la saga, número del andén y cantidad de casas.',a:['794'],h:'7 … 9 … 4.'},
+{q:'Ordená lo que se recibe en un cumpleaños:',v:'G O L A R E',a:['regalo'],h:'Viene envuelto.'},
+{q:'Hedwig se escondió entre los murciélagos. ¿Cuántos 🦉 hay?',g:[0,8,13],a:['3','tres'],h:'Contá fila por fila.'}]],
+hufflepuff:[
+[{q:'Es una copa dorada con un tejón grabado, de la fundadora de mi casa. Voldemort la guardó en Gringotts. ¿Qué es?',a:['copa','copadehufflepuff','copadehelga'],h:'Perteneció a Helga.'},
+{q:'Ordená el nombre del guardabosques de Hogwarts:',v:'R D I H G A',a:['hagrid','rubeushagrid'],h:'Es mitad gigante.'},
+{q:'¿Qué hechizo da luz en la punta de la varita?',o:['Lumos','Expelliarmus','Accio','Crucio'],a:['Lumos'],h:'Su nombre significa luz.'},
+{q:'Cada letra fue reemplazada por la siguiente del abecedario (A→B). Descifrá el hechizo:',v:'B D D J P',a:['accio'],h:'Llama objetos hacia vos.'}],
+[{q:'El partido empieza a las 15:00. Cedric se levantó 5 horas y 45 minutos antes. ¿A qué hora se levantó? (h:mm)',a:['9:15','09:15','915','0915'],h:'Restá 6 horas y sumá 15.'},
+{q:'Completá la secuencia:',v:'3 – 6 – 12 – 24 – 48 – ?',a:['96'],h:'Cada número se duplica.'},
+{q:'Ordená el nombre de la lechuza de Harry:',v:'W D G I H E',a:['hedwig'],h:'Es blanca como la nieve.'},
+{q:'Cada gol vale 10 puntos y la Snitch dorada 150. Hufflepuff hizo 11 goles y atrapó la Snitch; Gryffindor hizo 18 goles. ¿Por cuántos puntos ganó Hufflepuff?',a:['80'],h:'Hufflepuff: 110 + 150. Gryffindor: 180.'}],
+[{q:'Leé la palabra al revés y decime qué es:',v:'N O G A R D',a:['dragon'],h:'Escupe fuego.'},
+{q:'¿Qué posición (1-7) cambió en la segunda fila?',v:'🦁🐍🦅🦡🦁🐍🦅<br>🦅🐍🦅🦡🦁🐍🦅',a:['1','uno'],h:'Es la primera.'},
+{q:'Soy un tren rojo que sale del andén 9¾. ¿Qué soy?',a:['expresodehogwarts','trendehogwarts','expreso','tren','hogwartsexpress'],h:'Lleva alumnos al colegio.'},
+{q:'Girá el celular y leé el hechizo que aturde al oponente:',v:rot('STUPEFY'),a:['stupefy','desmaius'],h:'Un rayo rojo.'}],
+[{q:'¿Qué profesora de Herbología es la jefa de Hufflepuff?',o:['Pomona Sprout','Sybill Trelawney','Charity Burbage','Poppy Pomfrey'],a:['Pomona Sprout'],h:'Cuida las mandrágoras.'},
+{q:'¿Cómo se llama la gata del celador Filch?',a:['senoranorris','mrsnorris','norris'],h:'Se llama como una señora.'},
+{q:'Ordená la criatura que absorbe la felicidad:',v:'N T E R O M E D',a:['dementor','dementores'],h:'Los vigila Azkaban.'},
+{q:'Estatuas: 🦁 🐍 🦅 🦡. ¿Qué animal es el emblema de la casa de la valentía?',a:['leon','elleon','gryffindor'],h:'Es el rey de la selva.'}],
+[{q:'Una poción mezcla 3 ingredientes en proporción 4 : 1 : 5. Si el total son 20 ml, ¿cuántos ml tiene el ingrediente mayor?',a:['10','10ml'],h:'4 + 1 + 5 = 10 partes.'},
+{q:'El andén de Harry es un número menos uno. En binario, ¿cuál es el anterior? 1 0 0 1 en decimal:',v:'1 0 0 1',a:['9','nueve'],h:'8 + 1.'},
+{q:'Ordená el hechizo del guardián plateado:',v:'S U N O R T A P',a:['patronus'],h:'Se usa contra dementores.'},
+{q:'Cuatro frascos en fila: 🟠 🔵 🟣 🟢. Pistas: 1) El veneno no está en los extremos. 2) El naranja está a la izquierda del veneno. 3) El azul no es veneno. ¿Cuál es el veneno?',o:['🟠','🔵','🟣','🟢'],a:['🟣'],h:'Solo hay dos posiciones posibles.'}],
+[{q:'Sumá los dígitos del número de bóveda 687 y multiplicalo por la cantidad de libros de la saga.',a:['147'],h:'6+8+7 = 21; son 7 libros.'},
+{q:'Tres números seguidos: edad con la que Harry entra al colegio, cantidad de libros y cantidad de casas.',a:['1174'],h:'11 … 7 … 4.'},
+{q:'Ordená lo que se sirve en un cumpleaños:',v:'R T O T A',a:['torta','pastel'],h:'Se sopla una vela.'},
+{q:'Hedwig se escondió entre los murciélagos. ¿Cuántos 🦉 hay?',g:[2,7,10,15,19,23],a:['6','seis'],h:'Contá fila por fila.'}]]};
+function applyHouse(){const k=S&&S.house&&HC[S.house]?S.house:'gryffindor';CFG.codes=HC[k];R=BASE.map((r,i)=>Object.assign({},r,{ch:r.ch.map((c,j)=>Object.assign({},c,(V[k][i]||[])[j]||{}))}))}
+const norm=s=>String(s).toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[\s\-.,!?]/g,'');
+let R,S,CFG={codes:CODES,bonus:500,paused:false,hideRank:false},DB=null,players={},view='intro',room=0,isOwner=false,sound=true,msg='';
+const sv=()=>{try{localStorage.setItem('g15',JSON.stringify(S))}catch(e){}if(DB&&S&&S.name)DB.collection('players').doc(S.id).set(S).catch(()=>{})};
+try{S=JSON.parse(localStorage.getItem('g15'))}catch(e){}
+applyHouse();
+function snd(f=660,d=.15){if(!sound)return;try{const c=new(window.AudioContext||window.webkitAudioContext)(),o=c.createOscillator(),g=c.createGain();o.frequency.value=f;o.connect(g);g.connect(c.destination);g.gain.setValueAtTime(.1,c.currentTime);g.gain.exponentialRampToValueAtTime(.001,c.currentTime+d);o.start();o.stop(c.currentTime+d)}catch(e){}}
+function boom(em=['🎉','✨','🎊','💜','🌟']){const f=document.createElement('div');f.className='flash';document.body.appendChild(f);setTimeout(()=>f.remove(),900);snd(880,.3);for(let i=0;i<24;i++){const d=document.createElement('div');d.className='fx';d.textContent=em[i%em.length];d.style.left=Math.random()*95+'%';d.style.animationDelay=Math.random()+'s';document.body.appendChild(d);setTimeout(()=>d.remove(),4200)}}
+const key=(r,c)=>r+'-'+c;
+const rdone=r=>R[r].ch.filter((_,c)=>S.done[key(r,c)]).length;
+const allRooms=()=>R.every((_,r)=>rdone(r)==4);
+const roomsDone=()=>R.filter((_,r)=>rdone(r)==4).length;
+function totals(){const t={};HOUSES.forEach(h=>t[h.k]=0);const L=Object.values(players);if(!DB||!L.find(p=>p.id==S.id))L.push(S);L.forEach(p=>{if(p&&p.house)t[p.house]+=p.pts||0});return t}
+const H=k=>HOUSES.find(h=>h.k==k)||HOUSES[0];
+function nav(){$('#nav').innerHTML=S&&S.house?`<button onclick="go('map')">🗺️ Mapa</button><button onclick="go('board')">🏆 Ranking</button><button onclick="go('profile')">👤 Yo</button><button onclick="sound=!sound;nav()">${sound?'🔊':'🔇'}</button>`:''}
+function go(v,r){view=v;if(r!=null)room=r;msg='';if(v=='room'||v=='final'){const o=document.createElement('div');o.className='ovl';o.innerHTML='<span>'+(v=='room'?R[room].e:'🚪')+'</span><h2>'+(v=='room'?R[room].n:'LA BÓVEDA DE LOS 15')+'</h2>';document.body.appendChild(o);snd(120,.6);setTimeout(()=>o.remove(),1500)}draw()}
+function draw(){nav();const a=$('#app');a.classList.remove('fi');void a.offsetWidth;a.classList.add('fi');
+if(CFG.paused&&!isOwner&&S&&S.house){a.innerHTML='<h2>JUEGO EN PAUSA</h2><p class="msg">La anfitriona pausó el juego. ¡Esperá un momento!</p>';return}
+({intro,setup,map,room:roomV,final,board,profile}[view]||intro)(a)}
+function intro(a){if(S&&S.house)return go('map');
+a.innerHTML=`<div class="pop"><div class="door"><i></i></div><h1>BIENVENIDOS AL CUMPLE 15 DE GIULIANA</h1><p class="msg mut">Seis salas. Seis secretos. Un misterio final.</p><button class="gold" onclick="go('setup')">ENTRAR AL JUEGO</button></div>`}
+function setup(a){a.innerHTML=`<h2>EL SECRETO DE GIULIANA</h2><div class="card"><small>Tu nombre</small><input id="nm" maxlength="20" placeholder="Escribí tu nombre" value="${S&&S.name||''}"></div><h3>Elegí tu casa</h3>${HOUSES.map(h=>`<div class="card hz" style="border-color:${h.c};box-shadow:0 0 18px ${h.c}55"><span class="sh">${h.s}</span><div style="flex:1"><b style="color:${h.c}">${h.n}</b><br><small>${h.m}</small></div><button class="sm" style="background:${h.c}" onclick="pick('${h.k}')">ELEGIR</button></div>`).join('')}<p class="msg er" id="er"></p>`}
+function pick(k){const n=$('#nm').value.trim();if(!n){$('#er').textContent='Primero escribí tu nombre.';return}
+const id=S&&S.id||'p'+Math.random().toString(36).slice(2,10);
+S={id,name:n,house:k,pts:100,done:{},hints:{},codes:{},final:false};applyHouse();sv();boom([H(k).s,'✨']);
+$('#app').innerHTML=`<div class="big pop">${H(k).s}</div><h2>¡Tu lealtad ha sido elegida!</h2><p class="msg">+100 puntos para ${H(k).n}</p>`;setTimeout(()=>go('map'),2200)}
+function map(a){const n=roomsDone();
+a.innerHTML=`<div class="card"><b>${S.name}</b> · ${H(S.house).s} ${H(S.house).n}<br><small>${n}/6 SALAS COMPLETADAS</small><div class="bar"><b style="width:${n/6*100}%"></b></div></div>`+R.map((r,i)=>{const d=rdone(i);return`<div class="card" onclick="go('room',${i})"><div class="hz"><span class="sh">${r.e}</span><div style="flex:1"><b>${i+1}. ${r.n}</b><br><small>${r.d}</small></div><span>${d==4?'✅':d+'/4'}</span></div></div>`}).join('')+`<div class="card ${allRooms()?'':'locked'}" ${allRooms()?'onclick="go(\'final\')"':''}><div class="hz"><span class="sh">${allRooms()?'🚪':'🔒'}</span><div><b>LA BÓVEDA DE LOS 15</b><br><small>${allRooms()?'¡Abierta!':'Completá las seis salas'}</small></div></div></div>`}
+function roomV(a){const r=R[room],d=rdone(room);
+const pend=r.ch.map((c,i)=>({c,i})).filter(x=>!S.done[key(room,x.i)]);
+a.innerHTML=`<button class="sm" onclick="go('map')">← Mapa</button><h2>${r.e} ${r.n}</h2><p class="msg mut">${r.d}</p><small>${d}/4 DESAFÍOS COMPLETADOS</small><div class="bar"><b style="width:${d*25}%"></b></div><div style="margin-top:8px">${r.ch.filter((_,i)=>S.done[key(room,i)]).map(c=>`<small class="ok">✅ ${c.t}</small><br>`).join('')}</div>`+
+(pend.length?pend.map(x=>chal(x.c,x.i)).join(''):`<div class="card pop"><h3>SALA COMPLETA</h3><div class="big">${S.codes[room]||CFG.codes[room]}</div><p class="msg">Fragmento secreto desbloqueado — guardado en TU COLECCIÓN SECRETA.</p></div>`)+`<p class="msg" id="msg">${msg}</p>`}
+function chal(c,i){const k=key(room,i),used=S.hints[k];let v=c.v==='GRID'?`<div class="sym">${gridHtml(c)}</div>`:c.v?`<div class="sym">${c.v}</div>`:'';
+return`<div class="card" id="c${i}"><small>DESAFÍO ${room*4+i+1}/24 · ${c.p} pts</small><h3>${c.t}</h3><p>${c.q}</p>${v}`+
+(c.o?c.o.map(o=>`<button onclick="check(${i},'${o}')">${o}</button>`).join(''):`<input id="in${i}" placeholder="Tu respuesta" autocomplete="off"><button class="gold" onclick="check(${i},$('#in${i}').value)">COMPROBAR</button>`)+
+`<div id="h${i}">${used?`<p class="mut">💡 ${c.h}</p>`:`<button onclick="clue(${i})">¿NECESITÁS UNA PISTA?</button>`}</div><p class="msg" id="m${i}"></p></div>`}
+function gridHtml(c){const s=[];for(let i=0;i<24;i++)s.push((c.g||[3,9,14,20]).includes(i)?'🦉':'🦇');return s.map((x,i)=>x+(i%6==5?'<br>':'')).join('')}
+function clue(i){$('#h'+i).innerHTML=`<p>Usar esta pista le costará 50 puntos a tu casa. ¿Seguro?</p><div class="row"><button class="gold" onclick="useClue(${i})">USAR PISTA</button><button onclick="roomV($('#app'))">CANCELAR</button></div>`}
+function useClue(i){const k=key(room,i);if(!S.hints[k]){S.hints[k]=1;S.pts-=50;sv();snd(300)}roomV($('#app'))}
+function check(i,v){const c=R[room].ch[i],k=key(room,i);if(S.done[k])return;
+if(c.a.map(norm).includes(norm(v))){S.done[k]=1;S.pts+=c.p;snd(780);boom(['✨']);
+if(rdone(room)==4){S.codes[room]=CFG.codes[room]}sv();const el=$('#c'+i);
+el.innerHTML='<h3>¡DESAFÍO COMPLETADO!</h3><p class="msg ok">+'+c.p+' puntos para '+H(S.house).n+'</p>';el.classList.add('dis');
+setTimeout(()=>{msg=rdone(room)==4?'🔓 ¡Sala completa! Fragmento: '+CFG.codes[room]:'';roomV($('#app'));if(rdone(room)==4)boom(['🔑','✨'])},950)}
+else{snd(180,.3);$('#m'+i).innerHTML='<span class="er">Todavía no. ¡Intentá de nuevo!</span>'}}
+function final(a){if(!allRooms())return go('map');
+if(S.final){a.innerHTML=`<div class="pop"><div class="door"><i></i></div><h1>¡FELICITACIONES! ¡DESBLOQUEASTE EL SECRETO DE LOS 15 DE GIULIANA!</h1><h2>¡Feliz cumpleaños 15, Giuliana! 🎂</h2><p class="msg">${S.name} · ${H(S.house).s} ${H(S.house).n}</p></div>`;return}
+a.innerHTML=`<h2>LA BÓVEDA DE LOS 15</h2><p class="msg">ENCONTRASTE LOS SEIS SECRETOS…<br>EL MISTERIO FINAL TE ESPERA.</p><div class="card"><input id="f1" placeholder="Nombre de la cumpleañera"><input id="f2" inputmode="numeric" placeholder="Edad"><input id="f3" placeholder="Código secreto completo"><button class="gold" onclick="tryFinal()">ABRIR LA BÓVEDA</button><p class="msg er" id="fm"></p></div>`}
+function tryFinal(){const ok=norm($('#f1').value)=='giuliana'&&['15','quince'].includes(norm($('#f2').value))&&norm($('#f3').value)==norm(CFG.codes.join(''));
+if(!ok){snd(180,.4);$('#fm').textContent='La bóveda sigue cerrada. ¡Revisá tus pistas!';return}
+S.final=true;S.pts+=+CFG.bonus||0;sv();boom(['🎉','🎂','✨','🎊','💛']);setTimeout(()=>boom(),1500);final($('#app'))}
+function board(a){if(CFG.hideRank&&!isOwner){a.innerHTML='<h2>RANKING DE CASAS</h2><p class="msg">El ranking está oculto por ahora… 👀</p>';return}
+const t=totals(),L=HOUSES.slice().sort((x,y)=>t[y.k]-t[x.k]);
+a.innerHTML='<h2>RANKING DE CASAS</h2>'+L.map((h,i)=>`<div class="card hz" style="border-color:${h.c}"><b>#${i+1}</b><span class="sh">${h.s}</span><b style="flex:1;color:${h.c}">${h.n}</b><b>${t[h.k]}</b></div>`).join('')+(DB?'<p class="msg mut">🔴 En vivo</p>':'<p class="msg mut">Modo sin conexión: solo se cuentan tus puntos.</p>')}
+function profile(a){const pend=24-Object.keys(S.done).length;
+a.innerHTML=`<h2>${S.name}</h2><div class="card"><b>${H(S.house).s} ${H(S.house).n}</b><br>Puntos aportados: <b>${S.pts}</b><br>Salas completadas: ${roomsDone()}/6<br>Desafíos pendientes: ${pend}</div><h3>TU COLECCIÓN SECRETA</h3><div class="row" style="flex-wrap:wrap">${R.map((r,i)=>`<div class="card sym" style="flex:1 0 28%;padding:10px;font-size:22px;letter-spacing:0">${rdone(i)==4?CFG.codes[i]:'🔒'}</div>`).join('')}</div>`}
+(()=>{const c=$('#bg'),x=c.getContext('2d');let P=[];function rs(){c.width=innerWidth;c.height=innerHeight}rs();addEventListener('resize',rs);for(let i=0;i<70;i++)P.push({x:Math.random()*c.width,y:Math.random()*c.height,r:Math.random()*2+.4,v:Math.random()*.5+.15,g:Math.random()<.35});(function f(){x.clearRect(0,0,c.width,c.height);P.forEach(p=>{p.y-=p.v;if(p.y<0){p.y=c.height;p.x=Math.random()*c.width}x.globalAlpha=.4+.4*Math.sin(Date.now()/500+p.x);x.fillStyle=p.g?'#e8c46a':'#b9a7ff';x.shadowBlur=8;x.shadowColor=x.fillStyle;x.beginPath();x.arc(p.x,p.y,p.r,0,7);x.fill()});requestAnimationFrame(f)})()})();
+(async()=>{draw();try{const u=await claude.use('user');isOwner=!!(u&&await u.isOwner());DB=await claude.use('db')}catch(e){}
+if(DB){
+DB.collection('players').onSnapshot(q=>{players={};q.docs.forEach(d=>players[d.id]=d.data());
+if(S&&players[S.id]&&!isOwner&&view=='board'||view=='admin')draw()},()=>{});
+if(S&&S.name)sv()}else nav()})();
+</script></body></html>
